@@ -43,12 +43,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
       <div className="space-y-6">
         {/* Main Carousel */}
         <div className="relative bg-gray-100 rounded-xl overflow-hidden">
-          <div className="relative flex items-center justify-center min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
+          <div className="relative flex items-center justify-center min-h-75 sm:min-h-100 lg:min-h-125">
             {/* Current Image */}
             <img
               src={getImageUrl(images[currentIndex]?.src)}
               alt={images[currentIndex]?.title || `Image ${currentIndex + 1}`}
-              className="max-w-full max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] w-auto h-auto object-contain cursor-pointer"
+              className="max-w-full max-h-100 sm:max-h-125 lg:max-h-150 w-auto h-auto object-contain cursor-pointer"
               onClick={() => openFullscreen(currentIndex)}
             />
 
