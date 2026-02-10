@@ -43,12 +43,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
       <div className="space-y-6">
         {/* Main Carousel */}
         <div className="relative bg-gray-100 rounded-xl overflow-hidden">
-          <div className="relative flex items-center justify-center min-h-100">
+          <div className="relative flex items-center justify-center min-h-[300px] sm:min-h-[400px] lg:min-h-[500px]">
             {/* Current Image */}
             <img
               src={getImageUrl(images[currentIndex]?.src)}
               alt={images[currentIndex]?.title || `Image ${currentIndex + 1}`}
-              className="max-w-full max-h-150 w-auto h-auto object-contain cursor-pointer"
+              className="max-w-full max-h-[400px] sm:max-h-[500px] lg:max-h-[600px] w-auto h-auto object-contain cursor-pointer"
               onClick={() => openFullscreen(currentIndex)}
             />
 
@@ -59,23 +59,23 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
               <>
                 <button
                   onClick={goToPrevious}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2.5 rounded-full transition-all duration-200 shadow-lg"
+                  className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2 sm:p-2.5 rounded-full transition-all duration-200 shadow-lg"
                   title="Previous image"
                 >
-                  <FaChevronLeft className="text-base" />
+                  <FaChevronLeft className="text-sm sm:text-base" />
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2.5 rounded-full transition-all duration-200 shadow-lg"
+                  className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2 sm:p-2.5 rounded-full transition-all duration-200 shadow-lg"
                   title="Next image"
                 >
-                  <FaChevronRight className="text-base" />
+                  <FaChevronRight className="text-sm sm:text-base" />
                 </button>
               </>
             )}
 
             {/* Image Counter */}
-            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-lg font-medium">
+            <div className="absolute bottom-2 sm:bottom-3 right-2 sm:right-3 bg-black/70 backdrop-blur-sm text-white text-xs px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg font-medium">
               {currentIndex + 1} / {images.length}
             </div>
           </div>
@@ -83,7 +83,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
 
         {/* Thumbnail Grid */}
         {images.length > 1 && (
-          <div className="grid grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
             {images.map((image, index) => (
               <button
                 key={index}
@@ -96,7 +96,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                 <img
                   src={getImageUrl(image.src)}
                   alt={image.title || `Thumbnail ${index + 1}`}
-                  className="w-full h-24 object-cover"
+                  className="w-full h-20 sm:h-24 object-cover"
                 />
               </button>
             ))}
@@ -117,10 +117,10 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
         >
           <button
             onClick={closeFullscreen}
-            className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-900 p-2.5 rounded-full transition-all duration-200 z-10 shadow-lg"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/90 hover:bg-white text-gray-900 p-2 sm:p-2.5 rounded-full transition-all duration-200 z-10 shadow-lg"
             title="Close (ESC)"
           >
-            <FaTimes className="text-lg" />
+            <FaTimes className="text-base sm:text-lg" />
           </button>
 
           {/* Fullscreen Navigation */}
@@ -131,47 +131,47 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                   e.stopPropagation();
                   goToPrevious();
                 }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full transition-all duration-200 z-10 shadow-lg"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2.5 sm:p-3 rounded-full transition-all duration-200 z-10 shadow-lg"
                 title="Previous"
               >
-                <FaChevronLeft className="text-lg" />
+                <FaChevronLeft className="text-base sm:text-lg" />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   goToNext();
                 }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-3 rounded-full transition-all duration-200 z-10 shadow-lg"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-900 p-2.5 sm:p-3 rounded-full transition-all duration-200 z-10 shadow-lg"
                 title="Next"
               >
-                <FaChevronRight className="text-lg" />
+                <FaChevronRight className="text-base sm:text-lg" />
               </button>
             </>
           )}
 
           {/* Fullscreen Image */}
-          <div className="relative max-w-full max-h-full p-4">
+          <div className="relative max-w-full max-h-full p-2 sm:p-4">
             <img
               src={getImageUrl(images[currentIndex]?.src)}
               alt={images[currentIndex]?.title || `Image ${currentIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain"
+              className="max-w-full max-h-[85vh] sm:max-h-[90vh] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
 
             {/* Fullscreen Info */}
             {(images[currentIndex]?.title || images[currentIndex]?.description) && (
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md text-white px-6 py-3 rounded-lg max-w-2xl">
+              <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-md text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg max-w-[90vw] sm:max-w-2xl">
                 {images[currentIndex]?.title && (
-                  <h3 className="text-lg font-bold mb-1">
+                  <h3 className="text-base sm:text-lg font-bold mb-1">
                     {images[currentIndex].title}
                   </h3>
                 )}
                 {images[currentIndex]?.description && (
-                  <p className="text-sm text-gray-200">
+                  <p className="text-xs sm:text-sm text-gray-200">
                     {images[currentIndex].description}
                   </p>
                 )}
-                <div className="mt-2 text-xs text-gray-300">
+                <div className="mt-2 text-[10px] sm:text-xs text-gray-300">
                   {currentIndex + 1} / {images.length}
                 </div>
               </div>
@@ -179,8 +179,8 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           </div>
 
           {/* ESC hint */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm">
-            Press <kbd className="px-2 py-0.5 bg-white/20 rounded font-mono">ESC</kbd> to close
+          <div className="absolute top-2 sm:top-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-md text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm">
+            Press <kbd className="px-1.5 sm:px-2 py-0.5 bg-white/20 rounded font-mono text-[10px] sm:text-xs">ESC</kbd> to close
           </div>
         </div>
       )}

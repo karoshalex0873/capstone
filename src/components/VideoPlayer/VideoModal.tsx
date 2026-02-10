@@ -66,28 +66,28 @@ const VideoModal: React.FC<VideoModalProps> = ({ src, title, description, durati
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-6"
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 sm:p-4 md:p-6"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden"
+        className="bg-white rounded-xl shadow-2xl w-full max-w-[95vw] sm:max-w-4xl lg:max-w-5xl max-h-[95vh] sm:max-h-[90vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 shrink-0">
-          <div className="flex-1 min-w-0 mr-4">
-            <h3 className="text-lg font-semibold text-gray-900 truncate">{title}</h3>
+        <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-200 shrink-0">
+          <div className="flex-1 min-w-0 mr-2 sm:mr-4">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 truncate">{title}</h3>
             {description && (
-              <p className="text-sm text-gray-600 truncate">{description}</p>
+              <p className="text-xs sm:text-sm text-gray-600 truncate hidden sm:block">{description}</p>
             )}
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-all duration-200 shrink-0"
+            className="p-2 sm:p-2.5 rounded-lg hover:bg-gray-100 transition-all duration-200 shrink-0"
             title="Close (ESC)"
           >
-            <FaTimes className="text-gray-700 text-lg" />
+            <FaTimes className="text-gray-700 text-base sm:text-lg" />
           </button>
         </div>
 
@@ -138,8 +138,8 @@ const VideoModal: React.FC<VideoModalProps> = ({ src, title, description, durati
                   {isLoading && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black z-10">
                       <div className="flex flex-col items-center gap-3">
-                        <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600"></div>
-                        <p className="text-white font-medium">Loading video...</p>
+                        <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-purple-200 border-t-purple-600"></div>
+                        <p className="text-white font-medium text-sm sm:text-base">Loading video...</p>
                       </div>
                     </div>
                   )}
@@ -147,7 +147,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ src, title, description, durati
                     controls
                     autoPlay
                     className="max-w-full h-auto w-auto"
-                    style={{ objectFit: 'contain', maxHeight: '80vh' }}
+                    style={{ objectFit: 'contain', maxHeight: window.innerWidth < 768 ? '70vh' : '80vh' }}
                     preload="metadata"
                     onError={handleVideoError}
                     onLoadedMetadata={handleVideoLoad}
@@ -171,10 +171,10 @@ const VideoModal: React.FC<VideoModalProps> = ({ src, title, description, durati
 
         {/* Footer Info */}
         {!videoError && (
-          <div className="px-4 sm:px-6 py-3 border-t border-gray-700 bg-gray-800 shrink-0">
-            <p className="text-xs text-gray-400 text-center">
-              Press <kbd className="px-2 py-0.5 bg-gray-700 rounded text-gray-300 font-mono">ESC</kbd> to close •
-              Click outside video to close
+          <div className="px-3 sm:px-6 py-2 sm:py-3 border-t border-gray-700 bg-gray-800 shrink-0">
+            <p className="text-[10px] sm:text-xs text-gray-400 text-center">
+              Press <kbd className="px-1.5 sm:px-2 py-0.5 bg-gray-700 rounded text-gray-300 font-mono text-[10px] sm:text-xs">ESC</kbd> to close
+              <span className="hidden sm:inline"> • Click outside video to close</span>
             </p>
           </div>
         )}

@@ -144,16 +144,16 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
-      {/* Main container - 3/4 of screen height, not full width */}
-      <div className="bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden w-full max-w-[60vw]  h-[95vh]">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-2 sm:p-4">
+      {/* Main container - Responsive width and height */}
+      <div className="bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-[85vw] xl:max-w-[75vw] h-[98vh] sm:h-[95vh]">
         {/* Header */}
-        <div className={`flex items-center justify-between px-5 py-4 border-b ${theme.border} bg-linear-to-r ${theme.bgFrom} ${theme.bgTo} shrink-0`}>
-          <div className="flex-1 min-w-0 mr-4">
-            <div className="flex items-center gap-3">
-              <span className="text-lg">{renderFileTypeIcon()}</span>
+        <div className={`flex items-center justify-between px-3 sm:px-5 py-3 sm:py-4 border-b ${theme.border} bg-linear-to-r ${theme.bgFrom} ${theme.bgTo} shrink-0`}>
+          <div className="flex-1 min-w-0 mr-2 sm:mr-4">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="text-base sm:text-lg hidden sm:inline">{renderFileTypeIcon()}</span>
               <div>
-                <h3 className="text-base font-semibold text-gray-900 truncate">{title}</h3>
+                <h3 className="text-sm sm:text-base font-semibold text-gray-900 truncate">{title}</h3>
                 <p className={`text-xs font-medium ${theme.text}`}>
                   {renderFileTypeBadge()}
                 </p>
@@ -161,30 +161,30 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={handleDownload}
-              className={`p-2.5 rounded-lg ${theme.buttonHover} transition-colors`}
+              className={`p-2 sm:p-2.5 rounded-lg ${theme.buttonHover} transition-colors`}
               title="Download"
             >
-              <FaDownload className={`text-gray-600 ${theme.text}`} />
+              <FaDownload className={`text-sm sm:text-base text-gray-600 ${theme.text}`} />
             </button>
 
             <button
               onClick={handleFullscreen}
-              className="p-2.5 rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-2 sm:p-2.5 rounded-lg hover:bg-gray-100 transition-colors hidden sm:flex"
               title="Open in new tab"
             >
-              <FaExpand className="text-gray-600" />
+              <FaExpand className="text-sm sm:text-base text-gray-600" />
             </button>
 
             {onClose && (
               <button
                 onClick={onClose}
-                className="p-2.5 rounded-lg hover:bg-red-100 transition-colors ml-1"
+                className="p-2 sm:p-2.5 rounded-lg hover:bg-red-100 transition-colors"
                 title="Close"
               >
-                <FaTimes className="text-gray-600 hover:text-red-600" />
+                <FaTimes className="text-sm sm:text-base text-gray-600 hover:text-red-600" />
               </button>
             )}
           </div>
@@ -265,7 +265,7 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
                             renderTextLayer={false}
                             renderAnnotationLayer={false}
                             className="mx-auto"
-                            width={Math.min(window.innerWidth * 0.6, 1000)}
+                            width={Math.min(window.innerWidth * 0.9, window.innerWidth < 768 ? window.innerWidth - 80 : window.innerWidth < 1024 ? 700 : 1000)}
                             loading={
                               <div className="flex items-center justify-center min-h-100">
                                 <div className="text-center space-y-3">
@@ -343,9 +343,9 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
         </div>
 
         {/* Footer */}
-        <div className={`px-5 py-3 border-t ${theme.border} bg-linear-to-r ${theme.bgFrom} ${theme.bgTo} shrink-0`}>
+        <div className={`px-3 sm:px-5 py-2 sm:py-3 border-t ${theme.border} bg-linear-to-r ${theme.bgFrom} ${theme.bgTo} shrink-0`}>
           <div className="flex items-center justify-between">
-            <div className="text-xs text-gray-600">
+            <div className="text-[10px] sm:text-xs text-gray-600">
               {isPdfFile || isPptFile ? (
                 <>
                   {isLoading ? 'Loading document...' : `Viewing ${isPptFile ? 'presentation' : 'document'} • Page ${pageNumber} of ${numPages}`}

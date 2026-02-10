@@ -310,13 +310,13 @@ const ProjectPage: React.FC = () => {
 
             {/* Content Grid - Improved styling to match screenshot */}
             {activeContent.length === 0 && !activeGallery ? (
-              <div className="bg-white rounded-xl p-12 sm:p-16 text-center border-2 border-dashed border-gray-300">
-                <div className="text-4xl sm:text-5xl mb-4 opacity-40">📁</div>
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">No items available</h3>
+              <div className="bg-white rounded-xl p-8 sm:p-12 lg:p-16 text-center border-2 border-dashed border-gray-300">
+                <div className="text-3xl sm:text-4xl lg:text-5xl mb-4 opacity-40">📁</div>
+                <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-2">No items available</h3>
                 <p className="text-xs sm:text-sm text-gray-600">Content will appear here once uploaded.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                 {activeContent.map((file) => (
                   <div
                     key={file.id}
@@ -360,11 +360,11 @@ const ProjectPage: React.FC = () => {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="font-semibold text-gray-900 mb-2 transition-colors line-clamp-2 text-base leading-snug">
+                    <h3 className="font-semibold text-gray-900 mb-2 transition-colors line-clamp-2 text-sm sm:text-base leading-snug">
                       {file.title}
                     </h3>
                     {file.description && (
-                      <p className="text-sm text-gray-600 line-clamp-3 mb-3 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-gray-600 line-clamp-3 mb-3 leading-relaxed">
                         {file.description}
                       </p>
                     )}
@@ -403,7 +403,7 @@ const ProjectPage: React.FC = () => {
                         {file.title.includes('LinkedIn') && (
                           <div className="flex items-center gap-2">
                             <div className="p-1.5 rounded bg-blue-100">
-                              <FaLinkedin   className="text-base text-blue-600" />
+                              <FaLinkedin className="text-base text-blue-600" />
                             </div>
                             <span className="text-xs text-gray-600 font-medium">LinkedIn Profile</span>
                           </div>

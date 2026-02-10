@@ -30,6 +30,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -46,6 +50,15 @@ body,
     background-color 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s ease;
+}
+
+/* Touch-friendly minimum sizes */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 /* Custom scrollbar */
