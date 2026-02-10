@@ -14,7 +14,6 @@ export const RESUMES = {
 // RUBRIC ITEM 2: Autobiographical Essay (20-30 pages)
 // ============================================================================
 export const AUTOBIOGRAPHY = {
-  ESSAY: "/documents/auto_essy/autobio essy.docx",
   ESSAY_PDF: "https://drive.google.com/file/d/1tArSwRoF2ePf_DUEdxZN8x2o35Z5305G/view?usp=drive_link",
 } as const;
 
