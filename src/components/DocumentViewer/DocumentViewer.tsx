@@ -21,7 +21,7 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [, setIframeLoaded] = useState(false);
 
   // Check if file is from Google Drive
   const isGoogleDrive = isGoogleDriveUrl(src);
