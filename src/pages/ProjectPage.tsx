@@ -265,7 +265,7 @@ const ProjectPage: React.FC = () => {
 
         {/* Content Area - Scrollable but footer stays at bottom */}
         <div className="flex-1 overflow-y-auto">
-          <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
+          <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 pt-16 lg:pt-6">
             {/* Mobile Section Header */}
             <div className="lg:hidden mb-6 bg-linear-to-r from-emerald-50 to-white rounded-xl border border-emerald-100 p-5 shadow-sm">
               <div className="flex items-center gap-3 mb-3">
