@@ -21,7 +21,6 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [, setIframeLoaded] = useState(false);
 
   // Check if file is from Google Drive
   const isGoogleDrive = isGoogleDriveUrl(src);
@@ -79,7 +78,6 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
     setIsLoading(true);
     setLoadError(false);
     setPageNumber(1);
-    setIframeLoaded(false);
   }, [src, type]);
 
   const pdfOptions = useMemo(() => ({
@@ -102,7 +100,6 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({ src, title, type, onClo
   };
 
   const handleIframeLoad = () => {
-    setIframeLoaded(true);
     setIsLoading(false);
   };
 
