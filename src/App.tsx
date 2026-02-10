@@ -5,12 +5,12 @@ import Hero from "./components/Hero/Hero";
 
 const App = () => {
   return (
-    <Routes >
-      <Route path="/" element={
-        <Hero  />} />
-      <Route path="/project" element={<ProjectPage />} />
-    </Routes>
-
+    <div className="min-h-screen w-full overflow-x-hidden">
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/project" element={<ProjectPage />} />
+      </Routes>
+    </div>
   );
 };
 

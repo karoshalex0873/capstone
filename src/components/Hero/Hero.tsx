@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  FaGraduationCap, 
-  FaUniversity, 
-  FaIdCard, 
+import {
+  FaGraduationCap,
+  FaUniversity,
+  FaIdCard,
   FaBook,
   FaCalendar,
   FaArrowRight,
@@ -14,16 +14,16 @@ import { portfolioStats, studentInfo, heroStats, studentInfoItems } from '@/cons
 
 const Hero: React.FC = () => {
   return (
-    <div className="h-screen flex flex-col bg-white overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Navigation Bar - Compact */}
-      <nav className="w-full py-4 px-6 border-b border-gray-200">
+      <nav className="w-full py-4 px-6 border-b border-gray-200 shrink-0">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
             <span className="text-sm font-medium text-gray-700">DeKUT Capstone</span>
           </div>
-          <Link 
-            to="/project" 
+          <Link
+            to="/project"
             className="flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700"
           >
             View Portfolio
@@ -33,11 +33,11 @@ const Hero: React.FC = () => {
       </nav>
 
       {/* Main Content - Perfectly Centered, No Scroll */}
-      <main className="flex-1 flex items-center justify-center px-6 py-4">
+      <main className="flex-1 flex items-center justify-center px-6 py-8 sm:py-12 overflow-y-auto">
         <div className="max-w-6xl w-full mx-auto">
           {/* Grid Layout: 2 Columns on Desktop, 1 on Mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            
+
             {/* Left Column: Identity & Stats */}
             <div className="space-y-8">
               {/* Title & Tagline */}
@@ -48,11 +48,11 @@ const Hero: React.FC = () => {
                   </div>
                   <span className="text-sm font-medium text-emerald-700">Final Year Project</span>
                 </div>
-                
+
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                   {studentInfo.full_name}
                 </h1>
-                
+
                 <p className="text-lg text-gray-600">
                   {portfolioStats.description}
                 </p>
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
               {/* Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {heroStats.map((stat, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="bg-gray-50 rounded-xl p-4 border border-gray-200"
                   >
@@ -103,14 +103,14 @@ const Hero: React.FC = () => {
               <div className="space-y-4">
                 {studentInfoItems.map((item, index) => {
                   let Icon;
-                  switch(item.icon) {
+                  switch (item.icon) {
                     case 'FaIdCard': Icon = FaIdCard; break;
                     case 'FaBook': Icon = FaBook; break;
                     case 'FaUniversity': Icon = FaUniversity; break;
                     case 'FaCalendar': Icon = FaCalendar; break;
                     default: Icon = FaIdCard;
                   }
-                  
+
                   return (
                     <div key={index} className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
                       <div className="p-2 rounded-lg bg-gray-100">
@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="text-center">
                   <p className="text-xs text-gray-500 mb-2">Ready to explore the complete project?</p>
-                  <Link 
+                  <Link
                     to="/project"
                     className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
                   >
@@ -153,8 +153,8 @@ const Hero: React.FC = () => {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="w-full py-3 px-6 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <footer className="w-full py-3 px-6 border-t border-gray-200 shrink-0">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} {studentInfo.institution}
           </p>

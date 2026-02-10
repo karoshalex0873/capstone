@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { isGoogleDriveUrl, getGoogleDriveImageUrl } from '@/utils/googleDrive';
 
 interface ImageGalleryProps {
   images: { src: string; title?: string; description?: string }[];
@@ -9,6 +10,11 @@ interface ImageGalleryProps {
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Convert Google Drive URLs to proper image URLs
+  const getImageUrl = (src: string) => {
+    return isGoogleDriveUrl(src) ? getGoogleDriveImageUrl(src) : src;
+  };
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -40,7 +46,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           <div className="relative flex items-center justify-center min-h-100">
             {/* Current Image */}
             <img
-              src={images[currentIndex]?.src}
+              src={getImageUrl(images[currentIndex]?.src)}
               alt={images[currentIndex]?.title || `Image ${currentIndex + 1}`}
               className="max-w-full max-h-150 w-auto h-auto object-contain cursor-pointer"
               onClick={() => openFullscreen(currentIndex)}
@@ -88,7 +94,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
                   }`}
               >
                 <img
-                  src={image.src}
+                  src={getImageUrl(image.src)}
                   alt={image.title || `Thumbnail ${index + 1}`}
                   className="w-full h-24 object-cover"
                 />
@@ -146,7 +152,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
           {/* Fullscreen Image */}
           <div className="relative max-w-full max-h-full p-4">
             <img
-              src={images[currentIndex]?.src}
+              src={getImageUrl(images[currentIndex]?.src)}
               alt={images[currentIndex]?.title || `Image ${currentIndex + 1}`}
               className="max-w-full max-h-[90vh] object-contain"
               onClick={(e) => e.stopPropagation()}
